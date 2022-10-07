@@ -11,7 +11,10 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
-    BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
+    #byebug
+    BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy 
+    #id: params[:id], book_id: params[:book_id]の情報はlink_toでの引数で渡しているため
+    #削除を押した時点で情報は特定できている、どちらかの情報を渡すだけでrailsが勝手に読み込む
     @book = Book.find(params[:book_id])
   end
 

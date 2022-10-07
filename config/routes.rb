@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
 
-
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
 
   resource :favorites, only: [:create, :destroy]

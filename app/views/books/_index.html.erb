@@ -19,7 +19,9 @@
         <td><%= render "favorites/btn", book: book %>
 
         </td>
-        <td></td>
+        <td class="book-comments-counter">
+            <%= render "book_comments/comments_count", book: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>

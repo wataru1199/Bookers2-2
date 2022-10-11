@@ -1,0 +1,33 @@
+<h2 class="rooms-title">Chat Room</h2>
+<% @entries.each do |e| %>
+<div class="user-name">
+<%= link_to user_path do %>
+<%= image_tag e.user.get_profile_image, size:'50x50' %>
+<%= e.user.name %>さん
+<% end %>
+</div>
+<% end %>
+<hr>
+<div class="chats">
+<div class="chat">
+<% if @messages.present? %>
+<% @messages.each do |m| %>
+<div class="chat-box">
+<div class="chat-hukidashi">
+<strong><%= m.body %></strong>
+<%= link_to(user_path) do %>
+<%= m.user.name %>
+<% end %>
+</div>
+</div>
+<% end %>
+<% end %>
+</div>
+<div class="posts">
+<%= form_for @message do |f| %>
+<%= f.text_field :body, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+<%= f.hidden_field :room_id, value: @room.id %>
+<%= f.submit "送信",class: 'form-submit'%>
+<% end %>
+</div>
+</div>
